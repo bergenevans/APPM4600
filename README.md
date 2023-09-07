@@ -7,3 +7,5 @@ This repo will help me because if I ever have any questions about how to write a
 add, commit, and push will be very important to do often
 
 This lab is meant to help gain an understanding of python in relation to the concepts we will learn in class
+
+The subdirectories of the repo put the homework and the labs into their respective folders to keep them separated
