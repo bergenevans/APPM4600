@@ -16,6 +16,8 @@ plt.show()
 x = np.linspace(1,10,10)
 y = np.arange(1,11)
 
+# : = everything
+# :N = everything until the Nth entry
 N = 3
 print('the first three entries of x are',x[:N])
 w = 10**(-np.linspace(1,10,10))
@@ -26,7 +28,6 @@ l = len(w)
 x = np.linspace(1,l,10)
 
 s = 3 * w
-
 
 plt.semilogy(x,w)
 plt.semilogy(x,s)
