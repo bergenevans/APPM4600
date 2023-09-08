@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# this linspace function orders data from 0 to 2pi in 100 increments
 X = np.linspace(0, 2 * np.pi, 100)
 Ya = np.sin(X)
 Yb = np.cos(X)
