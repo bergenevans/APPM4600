@@ -30,6 +30,7 @@ x = np.linspace(1,l,10)
 
 s = 3 * w
 
+# This creates a semilog scale plot along the y axis of x vs w and x vs s
 plt.semilogy(x,w)
 plt.semilogy(x,s)
 plt.xlabel('x')
