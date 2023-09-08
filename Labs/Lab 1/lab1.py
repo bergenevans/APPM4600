@@ -6,6 +6,7 @@ X = np.linspace(0, 2 * np.pi, 100)
 Ya = np.sin(X)
 Yb = np.cos(X)
 
+# this down below creates a plot of X and Y
 plt.plot(X, Ya)
 plt.plot(X,Yb)
 plt.xlabel('x')
