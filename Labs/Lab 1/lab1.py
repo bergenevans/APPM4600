@@ -23,6 +23,7 @@ print('the first three entries of x are',x[:N])
 w = 10**(-np.linspace(1,10,10))
 print(w)
 
+# computes the  length of w
 l = len(w)
 
 x = np.linspace(1,l,10)
