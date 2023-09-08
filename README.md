@@ -1,4 +1,4 @@
-# Bergen's APPM 4600 GitHub Repo
+# Evans
 
 This repo contains my code for both the homeworks and the labs that we have done and will do in APPM 4600
 
