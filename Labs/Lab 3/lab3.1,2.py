@@ -81,11 +81,11 @@ def bisection(f,a,b,tol):
 driver()  
 
 
-# print('1.a approx root of 0.999, no error message, and a f(star) = -2.98e-08')
-# print('1.b approx root of -1, an error message, and a f(star) = -2')
-# print('1.b Method b was not successful because the value for b was too small')
-# print('1.c approx root of 0.999, no error message, and a f(star) = -2.98e-08')
+print('1.a approx root of 0.999, no error message, and a f(star) = -2.98e-08')
+print('1.b approx root of -1, an error message, and a f(star) = -2')
+print('1.b Method b was not successful because the value for b was too small')
+print('1.c approx root of 0.999, no error message, and a f(star) = -2.98e-08')
 
-# print('1. It is possible to for bisection to find the root x = 0 because it exists within the bounds for c, which was successful')
+print('1. It is possible to for bisection to find the root x = 0 because it exists within the bounds for c, which was successful')
 
-# print('This is the behaivor I would expect because the second a and b values for sin(x) might just be out of range')
+print('This is the behaivor I would expect because the second a and b values for sin(x) might just be out of range')

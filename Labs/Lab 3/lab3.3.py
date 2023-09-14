@@ -56,5 +56,5 @@ def fixedpt(f,x0,tol,Nmax):
 
 driver()
 
-print('The code breaks because it functions (a),(b) converge, we get an overflow error saying the result is too large')
+print('The code breaks because it functions do not converge, we get an overflow error saying the result is too large')
 print('We can see the values of x1 getting larger and larger in the while loop')
