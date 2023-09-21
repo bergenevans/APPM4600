@@ -6,10 +6,6 @@ def driver():
 
 # test functions 
      f1 = lambda x: (10/(x+4))**0.5
-# fixed point is alpha1 = 1.4987....
-
-     # f2 = lambda x: 3+2*np.sin(x)
-#fixed point is alpha2 = 3.09... 
 
      Nmax = 100
      tol = 1e-10
@@ -17,18 +13,6 @@ def driver():
 # test f1 '''
      x0 = 1.5
      print(fixedpt(f1,x0,tol,Nmax))
-#      [xstar,ier] = fixedpt(f1,x0,tol,Nmax)
-#      print('the approximate fixed point is:',xstar)
-#      print('f1(xstar):',f1(xstar))
-#      print('Error message reads:',ier)
-    
-# test f2 '''
-#      x0 = 0.0
-#      [xstar,ier] = fixedpt(f2,x0,tol,Nmax)
-#      print('the approximate fixed point is:',xstar)
-#      print('f2(xstar):',f2(xstar))
-#      print('Error message reads:',ier)
-
 
 # define routines
 def fixedpt(f,x0,tol,Nmax):
