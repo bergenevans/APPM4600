@@ -16,8 +16,7 @@ def driver():
     tol = 1e-3
 
     [astar,ier,count] = bisection(f,a,b,tol)
-    formatted_num = "{:,.8f}".format(astar)
-    print('the approximate root is',formatted_num)
+    print('the approximate root is',astar)
     print('The number of iterations used was',count)
     # print('the error message reads:',ier)
     # print('f(astar) =', f(astar))
