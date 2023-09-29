@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# modified code provided on canvas
 
 def newton(f,fp,p0,tol,Nmax):
   """
