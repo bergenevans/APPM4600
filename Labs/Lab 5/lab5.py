@@ -55,7 +55,7 @@ def driver():
     print('3. I changed the input to now include the fprime, this is because it is needed to check for convergence via Newtons method')
     print('5. The advantages of this modified method is that it allows for a greater range of initial values in order to find the root')
     print('    Some limitations of this are that it is more prone to make mistakes since we are sending it through multiple functions.')
-    print('6a. Bisection with [a,b]=[2,4.5] resulted in 3.0000000000000000e+00 with 24 iterations')
+    print('6a. Bisecftion with [a,b]=[2,4.5] resulted in 3.0000000000000000e+00 with 24 iterations')
     print('6b. Newtons method with x0 = 4.5 resulted in a root value of 3.000000014901161 with 27 iterations')
     print('6c. hybrid method with [a,b]=[2,4.5] resulted in', pstar)
     print('    the number of iterations used was', count)
