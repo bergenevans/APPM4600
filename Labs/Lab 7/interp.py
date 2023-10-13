@@ -1,20 +1,24 @@
 import numpy as np
 import numpy.linalg as la
 import matplotlib.pyplot as plt
+from numpy.linalg import inv
 
 def driver():
 
 
     f = lambda x: 1/(1+(10*x)**2)
 
-    N = 2
+    N = 18
     ''' interval'''
     a = -1
     b = 1
    
    
     ''' create equispaced interpolation nodes'''
-    xint = np.linspace(a,b,N+1)
+   #  xint = np.linspace(a,b,N+1)
+    xint = np.zeros((N+1, 1))
+    for j in range(N+1):
+       xint[j] = np.cos((2*j-1)*np.pi/(2*N))
     
     ''' create interpolation data'''
     yint = f(xint)
@@ -22,6 +26,7 @@ def driver():
     ''' create points for evaluating the Lagrange interpolating polynomial'''
     Neval = 1000
     xeval = np.linspace(a,b,Neval+1)
+    yeval_m = np.zeros(Neval+1)
     yeval_l= np.zeros(Neval+1)
     yeval_dd = np.zeros(Neval+1)
   
@@ -35,7 +40,7 @@ def driver():
     y = dividedDiffTable(xint, y, N+1)
     ''' evaluate lagrange poly '''
     for kk in range(Neval+1):
-       # call monomial here
+       yeval_m[kk] = monomial(xeval[kk],xint,yint,N)
        yeval_l[kk] = eval_lagrange(xeval[kk],xint,yint,N)
        yeval_dd[kk] = evalDDpoly(xeval[kk],xint,y,N)
           
@@ -51,36 +56,33 @@ def driver():
     plt.plot(xeval,fex,'ro-')
     plt.plot(xeval,yeval_l,'bs--') 
     plt.plot(xeval,yeval_dd,'c.--')
+    plt.plot(xeval,yeval_m,'go--')
+   #  plt.title("Approximation")
     plt.legend()
 
     # absolute error
     plt.figure() 
     err_l = abs(yeval_l-fex)
     err_dd = abs(yeval_dd-fex)
+    err_m = abs(yeval_m-fex)
     plt.semilogy(xeval,err_l,'ro--',label='lagrange')
     plt.semilogy(xeval,err_dd,'bs--',label='Newton DD')
-    # plt.semilogy() -- Monomial stuff
+    plt.semilogy(xeval,err_m, 'c.--', label='Monomial')
     plt.legend()
+   #  plt.title("Absolute Error")
     plt.show()
 
-def van(xint,N):
-   V = np.zeros(N+1)
+
+def monomial(xeval,xint,yint,N):
+   V = np.zeros((N+1,N+1))
    for i in range(N+1):
       for j in range(N+1):
          V[i,j] = xint[i]**j
-         return V
-
-def monomial(V,xint,yint,N):
-   Vinv = np.inv(V)
-   for i in range(N+1):
-      for j in range(N+1):
-         f = yint(xint)
-         return f
-   a = np.zeros(N+1)  
-   a = np.matmul(f,Vinv)
+   Vinv = inv(V)
+   a = np.matmul(Vinv,yint)
+   yeval = 0
    for j in range(N+1):
-      yeval = a*yint[j]
-
+      yeval = yeval + a[j] * (xeval**j)
    return yeval
 
 
@@ -127,6 +129,10 @@ def evalDDpoly(xval, xint,y,N):
 
 driver()        
 
-# MUST SUBMIT ALL GRAPHS AND CODE
 # answers to questions:
-# Va = f, a = fV-1
+# 3.1 2. The methods seem to be about the same, their absolute error plots are nearly identical for each case
+# 3.1 3. when p(x) is about 100, the plot gets more and more crazy
+#     the errors for the methods go up by a lot and we can see the errors increase towards each end
+#     there still is not a lot of difference for the methods
+# 3.2 2. Using this interpolation nodes results in a singular matrix
+# 3.2 3. Cannot plot, results in a singular matrix
