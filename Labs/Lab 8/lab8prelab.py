@@ -14,6 +14,16 @@ def findxeval(xeval,xint):
         subintervals.append(ind)
     return subintervals
 
+# more for the lab:
+# def findxeval(xeval,xint):
+#     subintervals = []
+#     for i in range(10):
+#         ind = np.where((xint[i]<=xeval) & (xeval<=xint[i+1]))
+#         # print(ind)
+#         subintervals.append(ind)
+#     return subintervals
+
+
 result = findxeval(xeval, xint)
 print(result)
 
