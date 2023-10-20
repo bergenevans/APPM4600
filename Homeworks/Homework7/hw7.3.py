@@ -1,4 +1,4 @@
-# will be same as 7.2 but with chebychev points
+# will be same as 7.2 but with chebyshev points
 
 import numpy as np
 import numpy.linalg as la
