@@ -5,7 +5,6 @@ from numpy.linalg import inv
 from numpy.linalg import norm
 
 # modified cubic_spline_demo.py from canvas
-# not working for some reason
 
 def driver():
     
