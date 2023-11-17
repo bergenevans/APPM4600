@@ -2,12 +2,9 @@
 from gauss_legendre import *
 from scipy.integrate import quad
 # instead of ^^ can do:
-# from scipy.special import ... ??
 
 # modified adaptive_quad.py code provided on canvas
 # using gauss_legendre.py code provided on canvas
-
-# still need to add in graphs of the approximations
 
 # adaptive quad subroutines
 # the following three can be passed
@@ -23,33 +20,33 @@ def driver():
   tol = 1e-3
   actual = quad(f,a,b)
 
-  trap = eval_composite_trap(M,a,b,f)
-  simp = eval_composite_simpsons(M,a,b,f)
-  [I_hat,x,w] = eval_gauss_quad(M,a,b,f)
-
-  print('Composite Trapezoidal:', trap)
-  print('Composite Simpsons:', simp)
-  print('Gauss quad:', I_hat)
   print('Actual value:', actual[0])
 
   # this is returning that they only have one iteration?
-  for j in range(1,M):
-    diff_trap = trap - actual[0]
-    diff_simp = simp - actual[0]
-    diff_gauss = I_hat - actual[0]
-    if diff_trap < tol:
-      print('Composite Trapezoidal has this many iterations:',j)
-      break 
-    else:
-      print('Composite Trapezoidal has this many iterations:',j)
-    if diff_simp < tol:
-      print('Composite Simpsons has this many iterations:',j)
-      break 
-    else:
-      print('Composite Simpsons has this many iterations:',j)
-    if diff_gauss < tol:
-      print('Gauss guad has this many iterations:',j)
-      break 
+  trap_break = 0
+  simp_break = 0
+  gauss_break = 0
+  for j in range(1,100):
+    trap = eval_composite_trap(j,a,b,f)
+    simp = eval_composite_simpsons(j,a,b,f)
+    [I_hat,x,w] = eval_gauss_quad(j,a,b,f)
+    diff_trap = abs(trap - actual[0])
+    diff_simp = abs(simp - actual[0])
+    diff_gauss = abs(I_hat - actual[0])
+    if diff_trap < tol and trap_break == 0:
+      trap_break = j
+      print('Composite Trapezoidal:', trap)
+      print('Tolerance hit at ', j)
+    if diff_simp < tol and simp_break == 0:
+      simp_break = j
+      print('Composite Simpson', simp)
+    if diff_gauss < tol and gauss_break == 0:
+      gauss_break = j
+      print('gauss quad: ', I_hat)
+
+  print('Composite Trapezoidal has this many iterations at tol break:',trap_break)
+  print('Composite Simpsons has this many iterations at tol break:',simp_break)
+  print('Gauss guad has this many iterations at tol break:',gauss_break)
 
 def eval_composite_trap(M,a,b,f):
   """
@@ -102,7 +99,6 @@ def eval_gauss_quad(M,a,b,f):
   Currently uses Gauss-Legendre rule
   """
   
-  # this is the part of the code that will not work?
   x,w = lgwt(M,a,b) 
   I_hat = np.sum(f(x)*w)
   return I_hat,x,w
